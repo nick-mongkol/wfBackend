@@ -59,7 +59,7 @@ func handleMessages() {
 }
 
 func main() {
-	config.LoadEnv()
+	// config.LoadEnv()
 
 	r := gin.Default()
 

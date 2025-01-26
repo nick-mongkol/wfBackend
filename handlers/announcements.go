@@ -10,10 +10,15 @@ import (
 
 func GetAnnouncements(c *gin.Context) {
 	// Fetch announcements (dummy data for now)
-	announcements := []models.Announcement{
-		{ID: 1, Title: "Warframe Alert", Description: "Special Alert Mission!"},
-	}
+	// announcements := []models.Announcement{
+	// 	{ID: 1, Title: "Warframe Alert", Description: "Special Alert Mission!"},
+	// }
 	c.JSON(http.StatusOK, announcements)
+}
+
+var announcements = []models.Announcement{
+	{ID: 1, Title: "New Event", Description: "Join us for a special event!"},
+	{ID: 2, Title: "Maintenance", Description: "Server maintenance on Saturday."},
 }
 
 func CreateAnnouncement(c *gin.Context) {
@@ -22,6 +27,7 @@ func CreateAnnouncement(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
 		return
 	}
+	announcements = append(announcements, announcement)
 	// Here you would save the announcement to the database
-	c.JSON(http.StatusCreated, announcement)
+	c.JSON(http.StatusCreated, announcements)
 }
